@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  /* PRIMARY (verde) */
+  --color-primary: #16A34A;
+  --color-primary-dark: #15803D;
+  --color-primary-light: #DCFCE7;
+
+  /* SECONDARY (azul) */
+  --color-secondary: #2563EB;
+  --color-secondary-dark: #1D4ED8;
+  --color-secondary-light: #DBEAFE;
+
+  /* NEUTROS */
+  --color-bg: #F9FAFB;
+  --color-surface: #FFFFFF;
+  --color-border: #E5E7EB;
+
+  --color-text: #111827;
+  --color-text-light: #6B7280;
+
+  /* FEEDBACK */
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-error: #DC2626;
+}
+
+body{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1rem;
+    color: var(--text)
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*Base Mobile: 320–767px*/
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.6rem; }
+p  { font-size: 1rem; }
+
+.page{
+    width: 100%;
+    max-width: 1280px; 
+    margin: 0 auto;
+    padding: 100px 5% 80px 5%;
+    background-color: hsl(0, 1%, 76%);   
+}
+
+.scrollButton {
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid red;
+  font-size: 22px;
+  cursor: pointer;
+  background: red;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.scrollButton svg {
+  fill: red;
+  animation: bounceArrow 1.5s infinite ease-in-out;
+}
+
+@keyframes bounceArrow {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.8rem; }
+    p  { font-size: 1.05rem; }
+}
+
+
+/* Laptops pequenos */
+@media (min-width: 1024px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+    p  { font-size: 1.1rem; }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+    h1 { font-size: 3.4rem; }
+    h2 { font-size: 2.4rem; }
+    p  { font-size: 1.15rem; }
+}
+
+/* Telas grandes */
+@media (min-width: 1536px) {
+    h1 { font-size: 3.8rem; }
+    h2 { font-size: 2.6rem; }
+    p  { font-size: 1.2rem; }
+}

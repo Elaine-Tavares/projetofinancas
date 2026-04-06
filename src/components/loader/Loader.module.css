@@ -1,0 +1,10 @@
+.loader{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader img {
+    width: 60px;  
+}

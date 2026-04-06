@@ -1,0 +1,156 @@
+/* =========================
+   BASE (MOBILE FIRST)
+   ========================= */
+
+.container {
+   width: 100%;
+    max-width: 1280px; 
+    margin: 0 auto;
+    padding: 100px 5% 80px 5%;
+    background-color: hsl(0, 1%, 76%);   
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  flex-direction: column; /* mobile = coluna */
+  align-items: center; /* alinhamento mais natural no mobile */
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 22px; /* menor no mobile */
+}
+
+.header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* CARDS */
+.summary {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
+}
+
+/* hover só faz sentido em desktop */
+.card:hover {
+  transform: none;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 14px;
+}
+
+.card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+/* TRANSAÇÕES */
+.transactions h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.transactions p{
+  text-align: center;
+}
+
+.transactionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+/* CORES */
+.income {
+  color: #16a34a;
+}
+
+.expense {
+  color: #dc2626;
+}
+
+/* =========================
+   TABLET (>= 768px)
+   ========================= */
+
+@media (min-width: 768px) {
+  .container {
+    padding: 100px 5% 80px;
+  }
+
+  .header {
+    flex-direction: row; /* vira linha */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .summary {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 16px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card strong {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+/* =========================
+  DESKTOP (>= 1024px)
+   ========================= */
+
+@media (min-width: 1024px) {
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .summary {
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  /* agora hover faz sentido */
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card strong {
+    font-size: 22px;
+  }
+}
