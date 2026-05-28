@@ -3,9 +3,10 @@
     max-width: 1280px; 
     margin: 0 auto;
     border-bottom: 1px solid var(--color-primary-dark);
-    padding: 5%;
+    padding: 1%;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: var(--color-bg);
 }
 
@@ -18,7 +19,7 @@
 }
 
 .main_session_social{
-    padding-block: 20px;
+    padding-top: 1%;
     display: flex;
     justify-content: space-around;
     width: 100%;

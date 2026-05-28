@@ -139,11 +139,11 @@ input[type="number"] {
 }
 
 /* verde ou vermelho dependendo do tipo */
-.income {
+.entrada {
   color: #16a34a;
 }
 
-.expense {
+.saida {
   color: #dc2626;
 }
 

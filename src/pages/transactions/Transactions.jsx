@@ -30,8 +30,8 @@ export default function Transactions() {
 
  // OPTIONS (fixos)
   const transactionTypeOptions = [
-    { id: 1, name: "income" },
-    { id: 2, name: "expense" }
+    { id: 1, name: "entrada" },
+    { id: 2, name: "saida" }
   ];
 
   const transactionCategoryOptions = [
@@ -265,14 +265,14 @@ useEffect(() => {
       
             <div className={styles.top}>
               <span className={`${styles.type} ${
-                  t.transaction_type === "income"
-                    ? styles.income
-                    : styles.expense
+                  t.transaction_type === "entrada"
+                    ? styles.entrada
+                    : styles.saida
                 }`}>{t.transaction_type}</span>
               <span className={`${styles.amount} ${
-                  t.transaction_type === "income"
-                    ? styles.income
-                    : styles.expense
+                  t.transaction_type === "entrada"
+                    ? styles.entrada
+                    : styles.saida
                 }`}>
                 R$ {t.transaction_amount}
               </span>

@@ -22,8 +22,8 @@ export default function Transaction() {
  
   // OPTIONS
   const transactionTypeOptions = [
-    { id: 1, name: "income" },
-    { id: 2, name: "expense" }
+    { id: 1, name: "entrada" },
+    { id: 2, name: "saida" }
   ];
 
   const transactionCategoryOptions = [

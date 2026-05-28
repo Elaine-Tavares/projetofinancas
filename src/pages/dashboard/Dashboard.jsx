@@ -32,28 +32,30 @@ export default function Dashboard() {
   // CÁLCULOS
   // =========================
 
-  //totalIncome:
-  // 1. filter → pega apenas transações do tipo "income"
+  //totalentrada:
+  // 1. filter → pega apenas transações do tipo "entrada"
   // 2. reduce → soma todos os valores dessas transações
-  const totalIncome = transactions
-    .filter((t) => t.transaction_type === "income")
+  const totalentrada = transactions
+    .filter((t) => t.transaction_type === "entrada")
     .reduce((acc, t) => acc + Number(t.transaction_amount), 0);
 
-  //totalExpense:
-  // mesmo processo, mas filtrando "expense"
-  const totalExpense = transactions
-    .filter((t) => t.transaction_type === "expense")
+  //totalsaida:
+  // mesmo processo, mas filtrando "saida"
+  const totalsaida = transactions
+    .filter((t) => t.transaction_type === "saida")
     .reduce((acc, t) => acc + Number(t.transaction_amount), 0);
 
   //balance:
-  // saldo final = entradas - despesas
-  const balance = totalIncome - totalExpense;
+  // saldo final = entrada - despesas
+  const balance = totalentrada - totalsaida;
 
   // =========================
   // REQUISIÇÃO GET
   // =========================
 
   async function fetchTransactions() {
+    if (!user?.id) return;
+
     try {
       //Faz requisição GET para a API
       //passando o userId como parâmetro
@@ -65,6 +67,7 @@ export default function Dashboard() {
       if (response.data.success) {
         //salva as transações no estado
         setTransactions(response.data.data);
+        console.log("TRANSAÇOES", response.data.data)
       }
 
     } catch (error) {
@@ -82,7 +85,7 @@ export default function Dashboard() {
   //executa a função assim que o componente carrega (mount)
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [user]);
 
   //Enquanto estiver carregando, mostra o Loader
   if (loading) return <Loader />;
@@ -115,18 +118,18 @@ export default function Dashboard() {
          ========================= */}
       <section className={styles.summary}>
 
-        {/*Card de entradas */}
+        {/*Card de entrada */}
         <div className={styles.card}>
           <div className={styles.cardHeader}>
-            <span>Entradas</span>
+            <span>entrada</span>
 
             {/*Ícone visual */}
             <FaArrowUp />
           </div>
 
           {/*Valor formatado */}
-          <strong className={styles.income}>
-            {formatCurrency(totalIncome)}
+          <strong className={styles.entrada}>
+            {formatCurrency(totalentrada)}
           </strong>
         </div>
 
@@ -137,8 +140,8 @@ export default function Dashboard() {
             <FaArrowDown />
           </div>
 
-          <strong className={styles.expense}>
-            {formatCurrency(totalExpense)}
+          <strong className={styles.saida}>
+            {formatCurrency(totalsaida)}
           </strong>
         </div>
 
@@ -150,12 +153,12 @@ export default function Dashboard() {
           </div>
 
           {/*Classe dinâmica:
-              se saldo >= 0 → verde (income)
-              se saldo < 0 → vermelho (expense)
+              se saldo >= 0 → verde (entrada)
+              se saldo < 0 → vermelho (saida)
           */}
           <strong
             className={
-              balance >= 0 ? styles.income : styles.expense
+              balance >= 0 ? styles.entrada : styles.saida
             }
           >
             {formatCurrency(balance)}
@@ -177,25 +180,34 @@ export default function Dashboard() {
           <ul>
 
             {/*slice(0,5) → pega apenas as 5 primeiras transações */}
-            {transactions.slice(0, 5).map((t) => (
+            {transactions.map((t) => (
 
               //key é obrigatório no React para listas
-              <li key={t.id} className={styles.transactionItem}>
-                <div>
+              <li key={t.transaction_id} className={styles.transactionItem}>
+             
+                  {/*Tipo da transação */}
+                  {/*Valor com cor dinâmica */}
+                <span
+                  className={
+                    t.transaction_type === "entrada"
+                      ? styles.entrada
+                      : styles.saida
+                  }
+                >
+                  <strong>{t.transaction_type}</strong>
+                </span>
+                  
 
                   {/*Descrição da transação */}
-                  <strong>{t.description}</strong>
-
-                  {/*Tipo da transação */}
-                  <span>{t.transaction_type}</span>
-                </div>
+                  <span>{t.transaction_description}</span>
+            
 
                 {/*Valor com cor dinâmica */}
                 <span
                   className={
-                    t.transaction_type === "income"
-                      ? styles.income
-                      : styles.expense
+                    t.transaction_type === "entrada"
+                      ? styles.entrada
+                      : styles.saida
                   }
                 >
                   {formatCurrency(Number(t.transaction_amount))}
